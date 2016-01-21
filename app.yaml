@@ -1,4 +1,4 @@
-application: local-reviews
+application: riccardnie
 version: 1
 runtime: python27
 api_version: 1
@@ -25,19 +25,13 @@ handlers:
 - url: /save-post.*
   script: thankyoupost_datastore.app
 
-# This handler is used to retrieve an image stored in our database. It is
-# assume that the second part of the url will always be a valid Review Key.
-# - url: /getimg/.*
-#   script: localreviews_datastore.app
 
 - url: /create-thankyou
   script: main.app
-#  login: required
 
 # User Actions handlers
 - url: /ua/.*
   script: user_actions.app
-#  login: required
 
 - url: /get_counters
   script: user_actions.app

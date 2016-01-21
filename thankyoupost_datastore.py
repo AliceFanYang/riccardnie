@@ -9,7 +9,7 @@ class ThankYou(ndb.Model):
     # Title of the post
     title = ndb.StringProperty(required = True)
     # Person's name
-    name = ndb.StringProperty(required = True)
+    name = ndb.StringProperty()
     # Link to the person's icon
     icon_link = ndb.StringProperty()
     # Message of the post
