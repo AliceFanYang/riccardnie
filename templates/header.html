@@ -1,37 +1,40 @@
-{# This file contains all the HTML that will always be printed in the header of the document.
-   We put it here to keep these separated by the main content of our page. #}
-<DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Northampton Local Guide</title>
-  <link rel="stylesheet" type="text/css" href="style/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- <script src="scripts/common.js"></script> -->
-</head>
-<body>
-  <header id="mainheader">
-    <div id="menu_btn">
-      <h1>...</h1>
-    </div>
-    <h1>Welcome to your best guide to Northampton, MA<h1>
-  </header>
-  <nav>
-    <a href="{{menu_entry_1_link}}">{{ menu_entry_1}}</a>
-    <a href="#">Placeholder 2</a>
-    <a href="#">Placeholder 3</a>
-     <!-- {% if login_link %}
-    <a href="{{ login_link }}">Login</a>
-    {% elif logout_link %}
-    <a href="{{ logout_link }}">Logout</a>
-    {% endif %} -->
-  </nav>
-  <aside id="settings">
-    <div class="setting">
-      <label for="chk_sorted">Reverse Order</label>
-      <input type="checkbox" id="chk_sorted_order_reverse"></input>
-    </div>
-    <div class="setting">
-      <button id="btn_sort">Sort</input>
-    </div>
-  </aside>
+  <DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Riccardnie</title>
+      <!-- jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="scripts/common.js"></script>
+      <!-- Material Design Lite -->
+      <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+      <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+      <!-- vex for modal -->
+      <script src="libraries/vex.combined.min.js"></script>
+      <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
+      <link rel="stylesheet" href="libraries/vex.css" />
+      <link rel="stylesheet" href="libraries/vex-theme-flat-attack.css" />
+
+      <!-- my stylesheet -->
+      <link rel="stylesheet" type="text/css" href="style/style.css">
+
+    </head>
+    <body>
+      <header id="mainheader">
+        <h1>Thank you Sidnie & Riccardo!<h1>
+        </header>
+        <nav>
+          <!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="location.href='{{menu_entry_1_link}}'">
+            <i class="material-icons">add</i>
+          </button> -->
+          <a href="{{menu_entry_1_link}}">{{ menu_entry_1}}</a>
+          {% if login_link %}
+          <a href="{{ login_link }}">Login</a>
+          {% elif logout_link %}
+          <a href="{{ logout_link }}">Logout</a>
+          {% endif %}
+        </nav>
+>>>>>>> clientside
