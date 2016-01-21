@@ -1,0 +1,41 @@
+{# This template stores only the central section of the site, that with the reviews #}
+{# The beauty of comments in this format is that they don't get published#}
+<!-- While comments like this will.-->
+<section id="reviews">
+  {% for entry in entries %}
+  <article class="review" data-id="{{ entry.review_id }}">
+    <header>
+      <h2>{{ entry.name }}</h2>
+    </header>
+    <figure>
+      <img src="{{ entry.imglink }}"/>
+    </figure>
+    <div class="category">
+      {{ entry.category }}
+    </div>
+    <div class="description">
+      <p>
+      {{ entry.description }}
+      </p>
+    </div>
+    <div class="amenities">
+      {% if entry.amenities %}
+      <ul>
+        {% for am in entry.amenities %}
+          <li>{{ am  }}</li>
+        {% else %}
+          no data?
+        {% endfor %}
+      </ul>
+      {% else %}
+      <small>No amenities found.</small>
+      {% endif %}
+    </div>
+    <div class="user_likes">
+      user likes:   <span class="like_count">{{ entry.user_likes }}</span>
+      <button class="user_likes_btn likebutton">+1</button>
+      <button class="user_likes_btn dislikebutton">-1</button>
+    </div>
+  </article>
+  {% endfor %}
+</section>

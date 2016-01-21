@@ -5,13 +5,39 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /scripts
+  static_dir: scripts/
+- url: /style
+  static_dir: stylesheets/
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /save-review.*
+  script: localreviews_datastore.app
+
+# This handler is used to retrieve an image stored in our database. It is
+# assume that the second part of the url will always be a valid Review Key.
+- url: /getimg/.*
+  script: localreviews_datastore.app
+
+- url: /create-review
+  script: main.app
+  login: required
+
+# User Actions handlers
+- url: /ua/.*
+  script: user_actions.app
+  login: required
+
+# All unhandled request goes to the handler without restrictions.
 - url: .*
   script: main.app
 
 libraries:
 - name: webapp2
   version: "2.5.2"
+
+- name: jinja2
+  version: latest
