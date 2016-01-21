@@ -1,42 +1,90 @@
 {# This template stores only the central section of the site, that with the reviews #}
 {# The beauty of comments in this format is that they don't get published#}
 <!-- While comments like this will.-->
-<script src="scripts/reviews.js"></script>
+<script src="scripts/script.js"></script>
+
 <section id="reviews">
   {% for entry in entries %}
-  <article class="review" data-id="{{ entry.review_id }}">
-    <header>
-      <h2>{{ entry.name }}</h2>
-    </header>
-    <figure>
-      <img src="{{ entry.imglink }}"/>
-    </figure>
-    <div class="category">
-      {{ entry.category }}
+
+  <article class="thankyou_note">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" data-id="{{ entry.review_id }}">
+      <div class="card_title">
+        <h2>{{ entry.name }}</h2>
+      </div>
+      <figure>
+        <img src="{{ entry.imglink }}"/>
+      </figure>
+      <div class="mdl-card__supporting-text">
+        {{ entry.description }}
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <div class="presents">
+          <div class="present">
+            Riccardo's Present
+            <br>
+            <button class="present_button mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+              <i class="material-icons">card_giftcard</i>
+            </button>
+            <div class="present_content">
+              <figure>
+              <img src="http://www.freewebheaders.com/wordpress/wp-content/gallery/cats/cute-beautiful-american-cat-web-header.jpg">
+            </img>
+          </figure>
+            <div>
+              caption
+            </div>
+          </div>
+        </div>
+        <div class="present">
+          Sidnie's Present
+          <br>
+          <button class="present_button mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+            <i class="material-icons">card_giftcard</i>
+          </button>
+          <div class="present_content">
+            <figure>
+            <img src="http://www.freewebheaders.com/wordpress/wp-content/gallery/cats/cute-beautiful-american-cat-web-header.jpg">
+          </img>
+        </figure>
+          <div>
+            caption
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="description">
-      <p>
-      {{ entry.description }}
-      </p>
-    </div>
-    <div class="amenities">
-      {% if entry.amenities %}
-      <ul>
-        {% for am in entry.amenities %}
-          <li>{{ am  }}</li>
-        {% else %}
-          no data?
-        {% endfor %}
-      </ul>
-      {% else %}
-      <small>No amenities found.</small>
-      {% endif %}
-    </div>
-    <div class="user_likes">
-      user likes:   <span class="like_count">{{ entry.user_likes }}</span>
-      <button class="user_likes_btn likebutton">+1</button>
-      <button class="user_likes_btn dislikebutton">-1</button>
-    </div>
-  </article>
-  {% endfor %}
+  </div>
+
+  <!-- <div class="mdl-card__menu">
+  <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+  <i class="material-icons">share</i>
+</button>
+</div> -->
+</div>
+</article>
+
+<!-- <article class="review" data-id="{{ entry.review_id }}">
+<header>
+<h2>{{ entry.name }}</h2>
+</header>
+<figure>
+<img src="{{ entry.imglink }}"/>
+</figure>
+<div class="description">
+<p>
+{{ entry.description }}
+</p>
+</div>
+
+<div class="presents">
+Riccardo's Present
+<br>
+<button class="presents_btn likebutton">+1</button>
+<br>
+Sidnie's Present
+<br>
+<button class="presents_btn dislikebutton">-1</button>
+</div>
+</article> -->
+
+{% endfor %}
 </section>
