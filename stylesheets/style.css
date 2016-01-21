@@ -24,7 +24,7 @@ header#mainheader {
   width: 100%;
   height: 8em;
   clear:both;
-  background-color: #2196F3;
+  background-color: #FFA6CF;
   color: white;
   z-index: 100;  /* Always on top */
   overflow: auto;  /* If content does not fit, scroll */
@@ -37,7 +37,11 @@ header #menu_btn {
 }
 
 section {
-  /*background-image: url("/img/footerBackground");*/
+  background-image: url("/img/backgroundClementines"); no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
   display: inline-block;
 }
 
@@ -146,7 +150,7 @@ footer, so they need to end bofore it starts*/
 
 nav, #reviews {
   position: relative;
-  height: calc(100vh - 10em - 90px);  /* Wooot we can do math in CSS */
+  height: calc(100vh - 10em - 72px);  /* Wooot we can do math in CSS */
   overflow: scroll;
   top: 8em;
 }
