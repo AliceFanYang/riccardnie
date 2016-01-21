@@ -6,15 +6,15 @@
   {% for entry in entries %}
 
   <article class="thankyou_note">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" data-id="{{ entry.review_id }}">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" data-id="{{ entry.entry_id }}">
       <div class="card_title">
-        <h2>{{ entry.name }}</h2>
+        <h2>{{ entry.title }}</h2>
       </div>
       <figure>
-        <img src="{{ entry.imglink }}"/>
+        <img src="{{ entry.icon_link }}"/>
       </figure>
       <div class="mdl-card__supporting-text">
-        {{ entry.description }}
+        {{ entry.message }}
       </div>
       <div class="mdl-card__actions mdl-card--border">
         <div class="presents">
@@ -26,11 +26,11 @@
             </button>
             <div class="present_content">
               <figure>
-              <img src="http://www.freewebheaders.com/wordpress/wp-content/gallery/cats/cute-beautiful-american-cat-web-header.jpg">
+              <img src="{{ entry.present_riccardo }}">
             </img>
           </figure>
             <div>
-              caption
+              {{ entry.present_riccardo_caption }}
             </div>
           </div>
         </div>
@@ -42,11 +42,11 @@
           </button>
           <div class="present_content">
             <figure>
-            <img src="http://www.freewebheaders.com/wordpress/wp-content/gallery/cats/cute-beautiful-american-cat-web-header.jpg">
+            <img src="{{ entry.present_sidnie }}">
           </img>
         </figure>
           <div>
-            caption
+            {{ entry.present_sidnie_caption }}
           </div>
         </div>
       </div>
