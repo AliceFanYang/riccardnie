@@ -1,0 +1,63 @@
+{# This template can be used to display a form to enter a review.#}
+<script src="scripts/form.js"></script>
+
+<!-- Style This -->
+
+<section id="reviews">
+  <article class="review_input_form">
+  {# To be able to send any file, we must set the encoding type to
+     multipart/form-data #}
+
+  {#TODO: Fix this to be ajaxed#}
+  <form enctype="multipart/form-data">
+    <label for="thankyou_post_title">Title:</label>
+    <input id="thankyou_post_title" type="text" name="post_title"></input>
+
+    <label for="thankyou_person_name">Name: (Your own)</label>
+    <input id="thankyou_person_name" type="text" name="person_name"></input>
+
+    <label for="thankyou_icon_link">Your Icon Link:</label>
+    <input id="thankyou_icon_link" type="text" name="icon_img_link"></input>
+
+    <label for="thankyou_message">Message:</label>
+    <textarea id="thankyou_message" name="message"></textarea>
+
+    <label for="thankyou_ricc_link">Image Gift for Riccardo:</label>
+    <input id="thankyou_ricc_link" type="text" name="riccardo_img_link"></input>
+
+    <label for="thankyou_ricc_caption">Image Caption for Riccardo's Gift:</label>
+    <input id="thankyou_ricc_caption" type="text" name="riccardo_caption"></input>
+
+    <label for="thankyou_sidn_link">Image Gift for Sidney:</label>
+    <input id="thankyou_sidn_link" type="text" name="sidney_img_link"></input>
+
+    <label for="thankyou_sidn_caption">Image Caption for Sidney's Gift:</label>
+    <input id="thankyou_sidn_caption" type="text" name="sidney_caption"></input>
+
+    <button id="form_submit">Submit</button>
+  </form>
+
+  <!-- <form action="/save-review" method="post" enctype="multipart/form-data">
+    <label for="review_place_name">Name</label>
+    <input id="review_place_name" type="text" name="place_name">
+    <label for="review_description`">Review:</label>
+    <textarea id="review_description" name="description"></textarea>
+    <select name="category">
+      <option value="restaurant">Restaurant</option>
+      <option value="bar">Bar</option>
+      <option value="coffe">Coffe Place</option>
+    </select>
+    <label for="review_img">Image</label>
+    <input id="review_place_name" type="file" name="review_img">
+    <div id="amenities_list">
+      <label for="amenity-wifi">WiFi</label>
+      <input type="checkbox" id="amenity-wifi" name="amenity-WiFi"></input>
+      <label for="amenity-heating">Heating</label>
+      <input type="checkbox" id="amenity-heating" name="amenity-Heating"></input>
+      <label for="amenity-bathroom">Bathroom</label>
+      <input type="checkbox" id="amenity-bathroom" name="amenity-Bathroom"></input>
+    </div>
+    <input type="submit" id="form_submit">
+  </form> -->
+  <article>
+</section>

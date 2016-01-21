@@ -23,7 +23,7 @@ handlers:
 # - url: /getimg/.*
 #   script: localreviews_datastore.app
 
-- url: /create-review
+- url: /create-thankyou
   script: main.app
 #  login: required
 

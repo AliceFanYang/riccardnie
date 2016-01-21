@@ -1,6 +1,6 @@
 import webapp2
 import logging
-import localreviews_datastore as LR
+import thankyoupost_datastore as ty_ds
 from google.appengine.ext import ndb
 import json
 
