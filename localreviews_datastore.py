@@ -6,56 +6,76 @@ import re
 
 class Review(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
+    # Title of the post
     title = ndb.StringProperty(required = True)
+    # Person's name
+    name = ndb.StringProperty(required = True)
+    # Link to the person's icon
+    icon_link = ndb.StringProperty()
     # TextProperty is not indexed by default, but we can make it explicit
-    description = ndb.TextProperty(indexed = False)
-    # We don't use the choices property for category, to make it easier to
-    # add new categories in the future.
-    category = ndb.StringProperty()
+    # Message of the post
+    message = ndb.TextProperty(indexed = False, required = True)
+    # Link to picture for Riccardo's present
+    present_riccardo = ndb.StringProperty()
+    # Caption for Riccardo's present
+    present_riccardo_caption = ndb.StringProperty()
+    # Link to picture for Sidnie's present
+    present_sidnie = ndb.StringProperty()
+    # Caption for Sidnie's present_sidnie
+    present_sidnie_caption = ndb.StringProperty()
     # It's here but unused at the moment, we will learn how to store images
     # soon.
-    image = ndb.BlobProperty()
+    #image = ndb.BlobProperty()
     # An alternative to store the image itself in here, is to store a link to
     # an image file hosted elsewhere.
-    image_link = ndb.StringProperty()
+    #image_link = ndb.StringProperty()
     # It's important to store this as an IntegerProperty, because this way we
     # are instructing Datastore on how the index for this property should be
     # built
-    user_likes = ndb.IntegerProperty()
+    #user_likes = ndb.IntegerProperty()
     # Amenities is a repeated property. Like category, we don't fix the possible
     # Choices so we can add new ones dynamicly.
-    amenities = ndb.StringProperty(repeated=True)
+    #amenities = ndb.StringProperty(repeated=True)
+
 
 # This is the handler to load an image stored in a Review entity.
 # The request comes as /getimg/<entity_key>, and is separated by means of
 # regular expressions grouping in the "app" component at the end of this file.
 # The <entity_key> is passed in as an argument, since we used grouping in the
 # definition of app.
-class ViewPhotoHandler(webapp2.RequestHandler):
-    def get(self, review_key):
-        # Step 1: let's get the entity.
-        review_normalized_key = ndb.Key(urlsafe=review_key)
-        review = review_normalized_key.get()
-        # Step 2: if the entity has an image, send it.
-        if hasattr(review, 'image'):
-            # We must specify the type of file we are sending. In this app,
-            # for simplicity, we will assume only png, but we could have stored
-            # info on the file type in a separate property in Datastore, to be
-            # more flexible.
-            self.response.headers['Content-Type'] = 'image/png'
-            self.response.write(review.image)
+# class ViewPhotoHandler(webapp2.RequestHandler):
+#     def get(self, review_key):
+#         # Step 1: let's get the entity.
+#         review_normalized_key = ndb.Key(urlsafe=review_key)
+#         review = review_normalized_key.get()
+#         # Step 2: if the entity has an image, send it.
+#         if hasattr(review, 'image'):
+#             # We must specify the type of file we are sending. In this app,
+#             # for simplicity, we will assume only png, but we could have stored
+#             # info on the file type in a separate property in Datastore, to be
+#             # more flexible.
+#             self.response.headers['Content-Type'] = 'image/png'
+#             self.response.write(review.image)
 
 # Handler that will take care of receiving and saving a new review
 class SaveReviewHandler(webapp2.RequestHandler):
     # The advantage of a post handler for the form is that we can upload
     # arbitrarily large chunks of information, such as images.
     def post(self):
-        place_name = self.request.get('place_name')
-        category = self.request.get('category')
-        description = self.request.get('description')
-        review_img_link = self.request.get('review_img_link')
-        image = self.request.get('review_img')
-        amenities = []
+        post_title        = self.request.get("post_title")
+        person_name       = self.request.get("person_name")
+        icon_link         = self.request.get("icon_link")
+        message           = self.request.get("message")
+        riccardo_img_link = self.request.get("riccardo_img_link")
+        riccardo_caption = self.request.get("riccardo_caption")
+        sidnie_img_link = self.request.get("sidnie_img_link")
+        sidnie_caption = self.request.get("sidnie_caption")
+        # place_name = self.request.get('place_name')
+        # category = self.request.get('category')
+        # description = self.request.get('description')
+        # review_img_link = self.request.get('review_img_link')
+        # image = self.request.get('review_img')
+        # amenities = []
         # Let's find all the attributes whose key looks like "amenities-.*"
         for key,value in self.request.POST.items():
             re_obj = re.search(r'^amenity-(.*)',key)
