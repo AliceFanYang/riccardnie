@@ -5,7 +5,6 @@ $(document).ready(function(){
 function send_ajax_request(e){
   var form = $(e.currentTarget.parentElement);
   var post_title = form.find("#thankyou_post_title");
-  var person_name = form.find("#thankyou_person_name");
   var icon_img_link = form.find("#thankyou_icon_link");
   var message = form.find("#thankyou_message");
   var riccardo_img_link = form.find("#thankyou_ricc_link");
@@ -19,7 +18,6 @@ function send_ajax_request(e){
     url: "/save-post",
     data: {
       "post_title": post_title.val(),
-      "person_name": person_name.val(),
       "icon_img_link": icon_img_link.val(),
       "message": message.val(),
       "riccardo_img_link": riccardo_img_link.val(),

@@ -8,8 +8,6 @@ class ThankYou(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     # Title of the post
     title = ndb.StringProperty(required = True)
-    # Person's name
-    name = ndb.StringProperty()
     # Link to the person's icon
     icon_link = ndb.StringProperty()
     # Message of the post
@@ -29,7 +27,6 @@ class SavePostHandler(webapp2.RequestHandler):
     # arbitrarily large chunks of information, such as images.
     def post(self):
         post_title        = self.request.get("post_title")
-        person_name       = self.request.get("person_name")
         icon_img_link     = self.request.get("icon_img_link")
         message           = self.request.get("message")
         riccardo_img_link = self.request.get("riccardo_img_link")
@@ -40,7 +37,6 @@ class SavePostHandler(webapp2.RequestHandler):
         if post_title and message: # must have
             new_thankyou = ThankYou(
                 title = post_title,
-                name = person_name,
                 icon_link = icon_img_link,
                 message = message,
                 present_riccardo = riccardo_img_link,

@@ -51,7 +51,6 @@ class MainHandler(webapp2.RequestHandler):
         for entry in entries:
             new_entry = {
                 "title": entry.title,
-                "name": entry.name,
                 "message": entry.message,
                 "present_riccardo_caption": entry.present_riccardo_caption,
                 "present_sidnie_caption": entry.present_sidnie_caption
