@@ -33,7 +33,7 @@ header#mainheader {
 
 /* ---- Nav Properties ---- */
 nav {
-  position: absolute;
+  position: fixed;
   top: calc(8em - 28px);
   right: 0px;
   z-index: 200;
@@ -72,12 +72,10 @@ section#reviews option {
 .review_input_form  input, .review_input_form  textarea,
 .review_input_form  select {
   display: block;
-  margin: 10px;
-}
-
-.review_input_form  input[id*="amenity-"] {
-  display: inline;
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll
 }
 
 section#reviews #review_place_name {
@@ -105,6 +103,8 @@ article.review, article.review_input_form {
   border: 1px solid lightgrey;
   padding: 1em;
   margin: 1em;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 10px 10px 5px #888888;
 }
 
@@ -152,9 +152,10 @@ footer, so they need to end bofore it starts*/
 }
 
 .thankyou_note figure img {
-  width: 100%;
-  max-height: 150px;
+  display: block;
   max-width: 150px;
+  width: auto;
+  height: auto;
 }
 
 /* Everything in review is floating, the article itself would collapse since
@@ -211,7 +212,8 @@ article.review:after, article.review_input_form:after {
 }
 
 .present_content > figure > img {
-  width: 100%;
-  max-height: 150px;
+  display: block;
   max-width: 150px;
+  width: auto;
+  height: auto;
 }
