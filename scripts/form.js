@@ -27,6 +27,6 @@ function send_ajax_request(e){
     }
   }).done(function(msg){
     console.log("added!");
-    window.location.href = "/";
+    window.location.replace("/");
   });
 }
