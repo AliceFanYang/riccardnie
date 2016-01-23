@@ -25,6 +25,8 @@ handlers:
 - url: /save-post.*
   script: thankyoupost_datastore.app
 
+- url: /create-users
+  script: authenticate_datastore.app
 
 - url: /create-thankyou
   script: main.app

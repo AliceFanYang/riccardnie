@@ -5,7 +5,7 @@ from google.appengine.ext import ndb
 import re
 
 class ThankYou(ndb.Model):
-    date = ndb.DateTimeProperty(auto_now_add=True)
+    date = ndb.DateTimeProperty(auto_now_add = True)    
     # Title of the post
     title = ndb.StringProperty(required = True)
     # Link to the person's icon

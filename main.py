@@ -8,6 +8,7 @@ import jinja2
 import logging
 
 import thankyoupost_datastore as ty_ds
+import authenticate_datastore as au_ds
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -17,22 +18,28 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 # Sends to the browser a form to create new reviews.
 class ThankYouFormHandler(webapp2.RequestHandler):
     def get(self):
-        template_header = JINJA_ENVIRONMENT.get_template('templates/header.html')
-        template_footer = JINJA_ENVIRONMENT.get_template('templates/footer.html')
+        user = users.get_current_user()
+        if user and len(au_ds.AuthenticateUsers.query(
+                        au_ds.AuthenticateUsers.email == user.email()).fetch()) == 1:
+            template_header = JINJA_ENVIRONMENT.get_template('templates/header.html')
+            template_footer = JINJA_ENVIRONMENT.get_template('templates/footer.html')
 
-        header_values = {}
-        header_values["menu_entry_1"] = "List All Entries"
-        header_values["menu_entry_1_link"] = "/"
+            header_values = {}
+            header_values["menu_entry_1"] = "List All Entries"
+            header_values["menu_entry_1_link"] = "/"
 
-        self.response.write(template_header.render(header_values))
-        # Fill the body
-        # template_values = {'username': user.nickname(),
-        #                    'logout_link': users.create_logout_url('/')}
-        template = JINJA_ENVIRONMENT.get_template('templates/thankyou_form.html')
-        self.response.write(template.render())#template_values))
-        # Close the page
-        self.response.write(template_footer.render())
-
+            self.response.write(template_header.render(header_values))
+            # Fill the body
+            # template_values = {'username': user.nickname(),
+            #                    'logout_link': users.create_logout_url('/')}
+            template = JINJA_ENVIRONMENT.get_template('templates/thankyou_form.html')
+            self.response.write(template.render())#template_values))
+            # Close the page
+            self.response.write(template_footer.render())
+        elif not user:
+            self.redirect(users.create_login_url("/create-thankyou"))
+        else:
+            self.redirect(users.create_logout_url("/"))
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -70,6 +77,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
         # Close the page
         self.response.write(template_footer.render())
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
