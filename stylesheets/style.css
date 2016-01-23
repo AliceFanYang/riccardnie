@@ -28,14 +28,18 @@ header#mainheader {
   color: white;
   z-index: 100;  /* Always on top */
   overflow: auto;  /* If content does not fit, scroll */
-  box-shadow: 0px 5px 5px grey;
+  box-shadow: 0px 2px 2px #D19BB6;
 }
 
-header #menu_btn {
-  float: left;
-  margin: 10px;
+/* ---- Nav Properties ---- */
+nav {
+  position: fixed;
+  top: calc(8em - 28px);
+  right: 0px;
+  z-index: 200;
 }
 
+/* ---- Review Section ---- */
 section {
   background-image: url("/img/backgroundClementines"); no-repeat center center fixed;
    -webkit-background-size: cover;
@@ -51,9 +55,12 @@ section > article {
 }
 
 section#reviews {
-  width: 80%;
-  margin: auto; /* distribute free space on left and right */
-  float: right;
+  width: 100%;
+  margin: 0px 0px 0px 0px; /* distribute free space on left and right */
+  position: absolute;
+  height: calc(100vh - 10em - 72px);  /* Wooot we can do math in CSS */
+  overflow: scroll;
+  top: 8em;
 }
 
 /* Form Elements */
@@ -65,12 +72,10 @@ section#reviews option {
 .review_input_form  input, .review_input_form  textarea,
 .review_input_form  select {
   display: block;
-  margin: 10px;
-}
-
-.review_input_form  input[id*="amenity-"] {
-  display: inline;
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll
 }
 
 section#reviews #review_place_name {
@@ -94,30 +99,12 @@ footer {
  width: 100%;
 }
 
-/* Nav Properties */
-nav {
-  float: left;
-  max-width: 20%;
-}
-
-/* This is useful to separate a elements if we want them
-   on the same line */
-/* nav a::after {
-    content: " | "
-} */
-
-nav a {
-  display: block;
-  overflow: scroll;
-  margin: 1em;
-  white-space : nowrap;
-  max-width: 100%;
-}
-
 article.review, article.review_input_form {
   border: 1px solid lightgrey;
   padding: 1em;
   margin: 1em;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 10px 10px 5px #888888;
 }
 
@@ -148,17 +135,15 @@ footer, so they need to end bofore it starts*/
   outline: none;
 }
 
-nav, #reviews {
-  position: relative;
-  height: calc(100vh - 10em - 72px);  /* Wooot we can do math in CSS */
-  overflow: scroll;
-  top: 8em;
-}
-
 /* Let's configure our articles now */
 
 /* This might be unsafe, if we ever decide to add multiple figures in
    the article. It would be better to use a class name.*/
+.thankyou_note {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .thankyou_note figure {
   width: 30%;
   display: block;
@@ -167,9 +152,10 @@ nav, #reviews {
 }
 
 .thankyou_note figure img {
-  width: 100%;
-  max-height: 150px;
+  display: block;
   max-width: 150px;
+  width: auto;
+  height: auto;
 }
 
 /* Everything in review is floating, the article itself would collapse since
@@ -226,34 +212,8 @@ article.review:after, article.review_input_form:after {
 }
 
 .present_content > figure > img {
-  width: 100%;
-  max-height: 150px;
+  display: block;
   max-width: 150px;
-}
-
-@media only screen and (max-device-width: 480px) {
-  nav {
-    display: none;
-    border: 1px solid lightgrey;
-    padding: 1em;
-    margin: 1em;
-    box-shadow: 10px 10px 5px #888888;
-    position: fixed;
-    z-index: 100;
-    background-color: white;
-  }
-}
-
-
-@media only screen and (max-device-width: 480px) {
-  nav {
-    display: none;
-    border: 1px solid lightgrey;
-    padding: 1em;
-    margin: 1em;
-    box-shadow: 10px 10px 5px #888888;
-    position: fixed;
-    z-index: 100;
-    background-color: white;
-  }
+  width: auto;
+  height: auto;
 }
